@@ -1,0 +1,18 @@
+<svg width="720" height="900" viewBox="0 0 720 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="720" height="900" rx="48" fill="#F5F7FB"/>
+  <rect x="36" y="36" width="648" height="828" rx="36" fill="#FFFFFF" stroke="#DCE3EE" stroke-width="4"/>
+  <circle cx="360" cy="330" r="176" fill="#0F877A" fill-opacity="0.12"/>
+  <circle cx="360" cy="286" r="124" fill="#E8CDB4"/>
+  <path d="M248 598C252 506 300 448 360 448C420 448 468 506 472 598" stroke="#20424A" stroke-width="34" stroke-linecap="round"/>
+  <path d="M286 340C286 270 330 220 360 220C390 220 434 270 434 340C434 383 412 420 372 430C348 436 324 430 306 418C292 408 286 382 286 340Z" fill="#1F2A3A"/>
+  <path d="M298 263C302 208 340 176 360 176C380 176 418 208 422 263C424 284 414 306 394 318C380 326 360 330 360 330C360 330 340 326 326 318C306 306 296 284 298 263Z" fill="#1F2A3A"/>
+  <circle cx="336" cy="284" r="8" fill="#FFF3E8"/>
+  <circle cx="384" cy="284" r="8" fill="#FFF3E8"/>
+  <path d="M334 322C346 336 374 336 386 322" stroke="#8A5638" stroke-width="10" stroke-linecap="round"/>
+  <rect x="168" y="592" width="384" height="118" rx="40" fill="#0F877A"/>
+  <rect x="194" y="612" width="122" height="20" rx="10" fill="#E7FFFA"/>
+  <rect x="194" y="650" width="164" height="16" rx="8" fill="#B9EFDF"/>
+  <rect x="388" y="616" width="128" height="48" rx="24" fill="#FFFFFF" fill-opacity="0.9"/>
+  <path d="M438 626L452 640L476 612" stroke="#0F877A" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="360" y="812" text-anchor="middle" fill="#20424A" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="700">Amir Mahdi Amani</text>
+</svg>

@@ -23,7 +23,9 @@ const { data, id } = Astro.props.project;
 		display: flex;
 		align-items: flex-end;
 		min-height: 14rem;
-		background: var(--gradient-subtle);
+		background:
+			linear-gradient(135deg, rgba(15, 135, 122, 0.18), transparent 65%),
+			var(--gradient-subtle);
 		border: 1px solid var(--gray-800);
 		border-radius: 0.75rem;
 		box-shadow: var(--shadow-sm);

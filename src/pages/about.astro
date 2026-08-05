@@ -15,6 +15,10 @@ const recognitions = [
 	'Regione Veneto Scholarship',
 	'Speaker at the 15th International Petroleum Technology Conference, Bangkok, 2023',
 ];
+
+const publications = [
+	'First and corresponding author of “A Unified Conditional Policy for Multi-Robot Navigation via LiDAR-to-Vision Distillation.” Accepted for publication in Machines (MDPI), 2026.',
+];
 ---
 
 <BaseLayout
@@ -53,6 +57,14 @@ const recognitions = [
 				<div class="content">
 					<ul>
 						{education.map((item) => <li>{item}</li>)}
+					</ul>
+				</div>
+			</section>
+			<section>
+				<h2 class="section-title">Publications</h2>
+				<div class="content">
+					<ul>
+						{publications.map((item) => <li>{item}</li>)}
 					</ul>
 				</div>
 			</section>

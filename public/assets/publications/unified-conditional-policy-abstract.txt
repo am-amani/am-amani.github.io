@@ -1,0 +1,9 @@
+Title: A Unified Conditional Policy for Multi-Robot Navigation via LiDAR-to-Vision Distillation
+
+Authors: Amir Mahdi Amani, Samaneh Amani, Alireza Hossein MajidiRad
+Venue: Machines (MDPI), Accepted for 2026
+
+Short Abstract:
+This work presents a conditional policy framework for multi-robot navigation that transfers behavior from LiDAR-based perception to vision-based perception through teacher-student distillation. The approach aims to preserve robust navigation decisions under sensing changes while maintaining coordination quality across multiple robots.
+
+Keywords: multi-robot navigation, LiDAR, vision, policy distillation, teacher-student learning

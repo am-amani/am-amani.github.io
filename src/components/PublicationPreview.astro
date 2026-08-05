@@ -1,0 +1,144 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	publication: CollectionEntry<'publications'>;
+}
+
+const { data } = Astro.props.publication;
+const dateLabel = data.publishDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+---
+
+<article class="card">
+	<div class="copy">
+		<p class="meta">{dateLabel} · {data.venue}</p>
+		<h3>{data.title}</h3>
+		<p class="description">{data.description}</p>
+		<p class="abstract">{data.abstractSummary}</p>
+		<p class="authors">
+			<span class="first-author">
+				{data.authors[0]}<span class="star" aria-hidden="true">*</span>
+			</span>
+			{data.authors.slice(1).length > 0 && <span>, {data.authors.slice(1).join(', ')}</span>}
+		</p>
+		{data.authorRole && (
+			<p class="role">
+				<span class="star" aria-hidden="true">*</span> {data.authorRole}
+			</p>
+		)}
+		<div class="actions">
+			<a href={data.downloadHref} download class="download-link">Download Manuscript</a>
+			<a href={data.journalHref} target="_blank" rel="noopener noreferrer" class="journal-link">
+				Journal Link
+			</a>
+		</div>
+	</div>
+</article>
+
+<style>
+	.card {
+		display: flex;
+		min-height: 16rem;
+		background:
+			linear-gradient(145deg, rgba(15, 135, 122, 0.2), transparent 60%),
+			var(--gradient-subtle);
+		border: 1px solid var(--gray-800);
+		border-radius: 0.75rem;
+		box-shadow: var(--shadow-sm);
+	}
+
+	.copy {
+		display: flex;
+		flex-direction: column;
+		gap: 0.8rem;
+		width: 100%;
+		padding: 1.25rem;
+	}
+
+	.meta {
+		font-size: var(--text-sm);
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: var(--gray-400);
+	}
+
+	h3 {
+		font-size: var(--text-xl);
+		color: var(--gray-100);
+	}
+
+	.description {
+		color: var(--gray-200);
+	}
+
+	.abstract {
+		color: var(--gray-300);
+	}
+
+	.authors {
+		color: var(--gray-400);
+		font-size: var(--text-sm);
+	}
+
+	.first-author {
+		color: var(--gray-400);
+		white-space: nowrap;
+	}
+
+	.star {
+		color: #2dbf7d;
+		font-size: 0.9em;
+		font-weight: 700;
+		vertical-align: super;
+		margin-left: 0.08em;
+	}
+
+	.role {
+		font-size: var(--text-sm);
+		font-weight: 600;
+		color: var(--accent-light);
+	}
+
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6rem;
+		margin-top: auto;
+	}
+
+	.download-link {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.6rem 1rem;
+		border-radius: 999rem;
+		text-decoration: none;
+		font-weight: 600;
+		color: var(--accent-text-over);
+		background: var(--gradient-accent-orange);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.journal-link {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.6rem 1rem;
+		border-radius: 999rem;
+		text-decoration: none;
+		font-weight: 600;
+		color: var(--gray-100);
+		border: 1px solid var(--gray-700);
+		background: var(--gray-999_40);
+	}
+
+	@media (min-width: 50em) {
+		.card {
+			border-radius: 1.5rem;
+		}
+
+		.copy {
+			padding: 1.75rem;
+		}
+	}
+</style>

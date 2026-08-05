@@ -17,3 +17,10 @@ Key focus points:
 - ROS navigation stack integration
 - Event-driven communication with action interfaces
 - Obstacle awareness and reporting during navigation
+
+### Demo Video
+
+<video controls preload="metadata" style="width: 100%; border-radius: 1rem; border: 1px solid rgba(255, 255, 255, 0.15);">
+  <source src="/assets/videos/tiago-linkedin.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
