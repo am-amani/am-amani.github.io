@@ -1,22 +1,42 @@
 ---
 import Icon from './Icon.astro';
+
+const isGerman = Astro.url.pathname === '/de/' || Astro.url.pathname.startsWith('/de/');
 ---
 
 <section class="box skills">
 	<div class="stack gap-2 lg:gap-4">
 		<Icon icon="rocket-launch" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Robotics and Navigation</h2>
-		<p>ROS 1 and 2, Gazebo, SLAM, AMCL, MoveIt, multi-sensor navigation, and reinforcement learning.</p>
+		<h2>{isGerman ? 'Robotik und Navigation' : 'Robotics and Navigation'}</h2>
+		<p>
+			{
+				isGerman
+					? 'ROS 1 und 2, Gazebo, SLAM, AMCL, MoveIt, Multi-Sensor-Navigation und Reinforcement Learning.'
+					: 'ROS 1 and 2, Gazebo, SLAM, AMCL, MoveIt, multi-sensor navigation, and reinforcement learning.'
+			}
+		</p>
 	</div>
 	<div class="stack gap-2 lg:gap-4">
 		<Icon icon="code" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>AI and Vision</h2>
-		<p>PyTorch, TensorFlow, OpenCV, YOLOv5, image processing, and applied computer vision.</p>
+		<h2>{isGerman ? 'KI und Computer Vision' : 'AI and Vision'}</h2>
+		<p>
+			{
+				isGerman
+					? 'PyTorch, TensorFlow, OpenCV, YOLOv5, Bildverarbeitung und angewandte Computer Vision.'
+					: 'PyTorch, TensorFlow, OpenCV, YOLOv5, image processing, and applied computer vision.'
+			}
+		</p>
 	</div>
 	<div class="stack gap-2 lg:gap-4">
 		<Icon icon="strategy" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Automation and Planning</h2>
-		<p>Python, C++, SQL, QGIS, Docker, Linux, and data-driven workflows for technical planning and automation.</p>
+		<h2>{isGerman ? 'Automatisierung und Planung' : 'Automation and Planning'}</h2>
+		<p>
+			{
+				isGerman
+					? 'Python, C++, SQL, QGIS, Docker, Linux und datengetriebene Workflows fuer technische Planung und Automatisierung.'
+					: 'Python, C++, SQL, QGIS, Docker, Linux, and data-driven workflows for technical planning and automation.'
+			}
+		</p>
 	</div>
 </section>
 

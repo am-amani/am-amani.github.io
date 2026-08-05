@@ -1,12 +1,18 @@
 ---
 import CallToAction from './CallToAction.astro';
 import Icon from './Icon.astro';
+
+const isGerman = Astro.url.pathname === '/de/' || Astro.url.pathname.startsWith('/de/');
+const title = isGerman
+	? 'Interesse an KI-, Robotik- oder Automatisierungsprojekten?'
+	: 'Interested in AI, robotics, or automation work?';
+const cta = isGerman ? 'Kontakt aufnehmen' : 'Get In Touch';
 ---
 
 <aside>
-	<h2>Interested in AI, robotics, or automation work?</h2>
+	<h2>{title}</h2>
 	<CallToAction href="mailto:amirmahdi.amani7th@gmail.com">
-		Get In Touch
+		{cta}
 		<Icon icon="paper-plane-tilt" size="1.2em" />
 	</CallToAction>
 </aside>

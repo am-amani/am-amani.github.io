@@ -1,0 +1,145 @@
+---
+import ContactCTA from '../../components/ContactCTA.astro';
+import Hero from '../../components/Hero.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const education = [
+	'M.Sc. Computer Engineering (Artificial Intelligence und Robotik), Universitaet Padua, 2021 bis 2024',
+	'Erasmus+ Austausch fuer Masterarbeit und Forschungspraktikum, Universitaet Bonn, 2023 bis 2024',
+	'B.Sc. Software Engineering, Universitaet Birjand, 2015 bis 2020',
+];
+
+const recognitions = [
+	'Akzeptierte Journal-Publikation 2026 zur Multi-Roboter-Navigation via LiDAR-to-Vision Distillation',
+	'Erasmus+ Traineeship Scholarship',
+	'Regione Veneto Scholarship',
+	'Vortrag auf der 15th International Petroleum Technology Conference, Bangkok, 2023',
+];
+
+const publications = [
+	'Erst- und korrespondierender Autor von "A Unified Conditional Policy for Multi-Robot Navigation via LiDAR-to-Vision Distillation." Akzeptiert in Machines (MDPI), 2026.',
+];
+---
+
+<BaseLayout title="Ueber mich | Amir Mahdi Amani" description="Hintergrund, Ausbildung und Schwerpunkte von Amir Mahdi Amani.">
+	<div class="stack gap-20">
+		<main class="wrapper about">
+			<Hero
+				title="Ueber mich"
+				tagline="KI- und Robotikingenieur mit praxisnahem Fokus auf intelligente Systeme, autonome Navigation und technische Automatisierung."
+			>
+				<div class="intro-card">
+					<p>Standort: Köln, Deutschland</p>
+					<p>Aktuell bei Deutsche Netzplanung GmbH</p>
+					<p>Interessen: KI, Vision, Robotik und Automatisierung mit realem Nutzen.</p>
+				</div>
+			</Hero>
+
+			<section>
+				<h2 class="section-title">Hintergrund</h2>
+				<div class="content">
+					<p>
+						Ich habe einen M.Sc. in KI und Robotik und verbinde akademische Forschung mit praxisnaher Engineering-Arbeit. Meine Schwerpunkte liegen in Computer Vision, autonomer Navigation, Reinforcement Learning und datengetriebener Planung.
+					</p>
+					<p>
+						Meine Masterarbeit fokussierte Multi-Sensor-Roboternavigation mit Teacher-Student-Ansatz in ROS und Gazebo. In der Industrie arbeite ich an Netzplanung und Automatisierung mit geospatialer Analyse, technischer Dokumentation und softwaregestuetzter Optimierung.
+					</p>
+					<p>
+						Ich entwickle gerne klare und nutzbare Systeme, die Forschung in Werkzeuge fuer schnellere und bessere Entscheidungen ueberfuehren.
+					</p>
+				</div>
+			</section>
+			<section>
+				<h2 class="section-title">Ausbildung</h2>
+				<div class="content">
+					<ul>
+						{education.map((item) => <li>{item}</li>)}
+					</ul>
+				</div>
+			</section>
+			<section>
+				<h2 class="section-title">Publikationen</h2>
+				<div class="content">
+					<ul>
+						{publications.map((item) => <li>{item}</li>)}
+					</ul>
+				</div>
+			</section>
+			<section>
+				<h2 class="section-title">Auszeichnungen</h2>
+				<div class="content">
+					<ul>
+						{recognitions.map((item) => <li>{item}</li>)}
+					</ul>
+				</div>
+			</section>
+		</main>
+
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.about {
+		display: flex;
+		flex-direction: column;
+		gap: 3.5rem;
+	}
+
+	.intro-card {
+		margin-top: 1.5rem;
+		padding: 1.5rem;
+		border-radius: 1.5rem;
+		border: 1px solid var(--gray-800);
+		background:
+			linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92)),
+			var(--gradient-subtle);
+		box-shadow: var(--shadow-md);
+		color: var(--gray-100);
+	}
+
+	section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		color: var(--gray-100);
+	}
+
+	.section-title {
+		grid-column-start: 1;
+		font-size: var(--text-xl);
+		color: var(--gray-0);
+	}
+
+	.content {
+		grid-column: 2 / 4;
+	}
+
+	.content ul {
+		padding-left: 1.2rem;
+		display: grid;
+		gap: 0.75rem;
+	}
+
+	.content p,
+	.content li,
+	.intro-card p {
+		color: var(--gray-100);
+	}
+
+	@media (min-width: 50em) {
+		.about {
+			display: grid;
+			grid-template-columns: 1fr 60% 1fr;
+		}
+
+		.about > :global(:first-child) {
+			grid-column-start: 2;
+		}
+
+		section {
+			display: contents;
+			font-size: var(--text-lg);
+		}
+	}
+</style>

@@ -95,16 +95,17 @@ const publications = [
 		border-radius: 1.5rem;
 		border: 1px solid var(--gray-800);
 		background:
-			linear-gradient(135deg, var(--accent-soft), transparent 58%),
+			linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92)),
 			var(--gradient-subtle);
 		box-shadow: var(--shadow-md);
+		color: var(--gray-100);
 	}
 
 	section {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
-		color: var(--gray-200);
+		color: var(--gray-100);
 	}
 
 	.section-title {
@@ -121,6 +122,12 @@ const publications = [
 		padding-left: 1.2rem;
 		display: grid;
 		gap: 0.75rem;
+	}
+
+	.content p,
+	.content li,
+	.intro-card p {
+		color: var(--gray-100);
 	}
 
 	.content :global(a) {

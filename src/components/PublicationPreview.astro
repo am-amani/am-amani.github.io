@@ -6,7 +6,13 @@ interface Props {
 }
 
 const { data } = Astro.props.publication;
-const dateLabel = data.publishDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+const isGerman = Astro.url.pathname === '/de/' || Astro.url.pathname.startsWith('/de/');
+const dateLabel = data.publishDate.toLocaleDateString(isGerman ? 'de-DE' : 'en-US', {
+	year: 'numeric',
+	month: 'short',
+});
+const manuscriptLabel = isGerman ? 'Manuskript herunterladen' : 'Download Manuscript';
+const journalLabel = isGerman ? 'Journal-Link' : 'Journal Link';
 ---
 
 <article class="card">
@@ -27,9 +33,9 @@ const dateLabel = data.publishDate.toLocaleDateString('en-US', { year: 'numeric'
 			</p>
 		)}
 		<div class="actions">
-			<a href={data.downloadHref} download class="download-link">Download Manuscript</a>
+			<a href={data.downloadHref} download class="download-link">{manuscriptLabel}</a>
 			<a href={data.journalHref} target="_blank" rel="noopener noreferrer" class="journal-link">
-				Journal Link
+				{journalLabel}
 			</a>
 		</div>
 	</div>

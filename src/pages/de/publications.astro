@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import ContactCTA from '../../components/ContactCTA.astro';
+import Grid from '../../components/Grid.astro';
+import Hero from '../../components/Hero.astro';
+import PublicationPreview from '../../components/PublicationPreview.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const publications = (await getCollection('publicationsDe')).sort(
+	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+);
+---
+
+<BaseLayout
+	title="Publikationen | Amir Mahdi Amani"
+	description="Ausgewaehlte Publikationen von Amir Mahdi Amani mit Kurzfassung und Download-Links."
+>
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-8">
+			<Hero
+				title="Publikationen"
+				tagline="Forschungsarbeiten mit kurzer Zusammenfassung und Download-Optionen."
+				align="start"
+			/>
+			<Grid variant="offset">
+				{publications.map((publication) => <li><PublicationPreview publication={publication} /></li>)}
+			</Grid>
+		</main>
+		<ContactCTA />
+	</div>
+</BaseLayout>

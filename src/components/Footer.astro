@@ -2,12 +2,16 @@
 import Icon from './Icon.astro';
 
 const currentYear = new Date().getFullYear();
+const isGerman = Astro.url.pathname === '/de/' || Astro.url.pathname.startsWith('/de/');
+const builtWithText = isGerman ? 'Erstellt mit' : 'Built with';
+const forGithubPagesText = isGerman ? 'fuer GitHub Pages' : 'for GitHub Pages';
+const emailLabel = isGerman ? 'E-Mail' : 'Email';
 ---
 
 <footer>
 	<div class="group">
 		<p>
-			Built with <a href="https://astro.build/">Astro</a> for GitHub Pages
+			{builtWithText} <a href="https://astro.build/">Astro</a> {forGithubPagesText}
 			<Icon icon="rocket-launch" size="1.2em" />
 		</p>
 		<p>&copy; {currentYear} Amir Mahdi Amani</p>
@@ -15,7 +19,7 @@ const currentYear = new Date().getFullYear();
 	<p class="socials">
 		<a href="https://www.linkedin.com/in/amirmahdiamani">LinkedIn</a>
 		<a href="https://github.com/am-amani">GitHub</a>
-		<a href="mailto:amirmahdi.amani7th@gmail.com">Email</a>
+		<a href="mailto:amirmahdi.amani7th@gmail.com">{emailLabel}</a>
 	</p>
 </footer>
 <style>

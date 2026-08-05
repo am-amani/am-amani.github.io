@@ -1,87 +1,73 @@
 ---
 import { getCollection } from 'astro:content';
-// Component Imports
-import CallToAction from '../components/CallToAction.astro';
-// Page section components
-import ContactCTA from '../components/ContactCTA.astro';
-import Grid from '../components/Grid.astro';
-import Hero from '../components/Hero.astro';
-import Icon from '../components/Icon.astro';
-import Pill from '../components/Pill.astro';
-import PortfolioPreview from '../components/PortfolioPreview.astro';
-import PublicationPreview from '../components/PublicationPreview.astro';
-import Skills from '../components/Skills.astro';
-// Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
-import BaseLayout from '../layouts/BaseLayout.astro';
+import CallToAction from '../../components/CallToAction.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import Grid from '../../components/Grid.astro';
+import Hero from '../../components/Hero.astro';
+import Icon from '../../components/Icon.astro';
+import Pill from '../../components/Pill.astro';
+import PortfolioPreview from '../../components/PortfolioPreview.astro';
+import PublicationPreview from '../../components/PublicationPreview.astro';
+import Skills from '../../components/Skills.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const allProjects = await getCollection('work');
+const allProjects = await getCollection('workDe');
 const projectBySlug = new Map(allProjects.map((entry) => [entry.id, entry]));
-const selectedProjectIds = [
-	'master-thesis-navigation',
-	'tiago-navigation',
-	'camera-pose-endoscopy',
-];
+const selectedProjectIds = ['master-thesis-navigation', 'tiago-navigation', 'camera-pose-endoscopy'];
 const selectedProjects = selectedProjectIds
 	.map((id) => projectBySlug.get(id))
 	.filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
 
-const featuredPublication = (await getCollection('publications'))
+const featuredPublication = (await getCollection('publicationsDe'))
 	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
 	.at(0);
 
-const selectedWork = [
-	featuredPublication,
-	selectedProjects[1],
-	selectedProjects[0],
-	selectedProjects[2],
-].filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
+const selectedWork = [featuredPublication, selectedProjects[1], selectedProjects[0], selectedProjects[2]].filter(
+	(entry): entry is NonNullable<typeof entry> => Boolean(entry),
+);
 
 const highlights = [
-	'M.Sc. in AI and Robotics from the University of Padova',
-	'AI Solution Engineer focused on network planning, optimization, and automation',
-	'First and corresponding author on an accepted journal paper on multi-robot navigation via LiDAR-to-vision distillation',
-	'Erasmus+ research experience at the University of Bonn',
+	'M.Sc. in KI und Robotik an der Universitaet Padua',
+	'AI Solution Engineer mit Fokus auf Netzplanung, Optimierung und Automatisierung',
+	'Erst- und korrespondierender Autor einer akzeptierten Journal-Publikation zur Multi-Roboter-Navigation',
+	'Erasmus+ Forschungserfahrung an der Universitaet Bonn',
 ];
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
 ---
 
-<BaseLayout>
+<BaseLayout
+	title="Amir Mahdi Amani | AI Solution Engineer"
+	description="Portfolio von Amir Mahdi Amani mit Schwerpunkt auf KI, Robotik, Computer Vision und Automatisierung."
+>
 	<div class="stack gap-20 lg:gap-48">
 		<div class="wrapper stack gap-8 lg:gap-20">
 			<header class="hero">
 				<Hero
 					title="Amir Mahdi Amani"
-					tagline="AI solution engineer based in Cologne, working across robotics, computer vision, automation, and geospatial planning."
+					tagline="AI Solution Engineer in Köln mit Fokus auf Robotik, Computer Vision, Automatisierung und geospatialer Planung."
 					align="start"
 				>
 					<div class="roles">
-						<Pill><Icon icon="terminal-window" size="1.15em" /> AI</Pill>
-						<Pill><Icon icon="rocket-launch" size="1.15em" /> Robotics</Pill>
-						<Pill><Icon icon="strategy" size="1.15em" /> Automation</Pill>
+						<Pill><Icon icon="terminal-window" size="1.15em" /> KI</Pill>
+						<Pill><Icon icon="rocket-launch" size="1.15em" /> Robotik</Pill>
+						<Pill><Icon icon="strategy" size="1.15em" /> Automatisierung</Pill>
 					</div>
 				</Hero>
 
 				<div class="profile-card">
 					<div class="profile-photo-wrap">
-						<img src="/assets/portrait.jpg" alt="Portrait of Amir Mahdi Amani" />
+						<img src="/assets/portrait.jpg" alt="Portraet von Amir Mahdi Amani" />
 					</div>
-					<p class="eyebrow">Current role</p>
+					<p class="eyebrow">Aktuelle Position</p>
 					<h2>AI Solution Engineer</h2>
-					<p>Deutsche Netzplanung GmbH, Cologne</p>
+					<p>Deutsche Netzplanung GmbH, Köln</p>
 					<div class="profile-links">
 						<a href="https://github.com/am-amani">GitHub</a>
 						<a href="https://www.linkedin.com/in/amirmahdiamani">LinkedIn</a>
-						<a href="mailto:amirmahdi.amani7th@gmail.com">Email</a>
+						<a href="mailto:amirmahdi.amani7th@gmail.com">E-Mail</a>
 					</div>
 					<div class="cv-links">
-						<a class="cv-link primary" href="/assets/cv/Amir_Mahdi_Amani_CV_EN.pdf" download>
-							Download Resume (EN PDF)
-						</a>
-						<a class="cv-link" href="/assets/cv/Amir_Mahdi_Amani_CV_DE.pdf" download>
-							Download Resume (DE PDF)
-						</a>
+						<a class="cv-link primary" href="/assets/cv/Amir_Mahdi_Amani_CV_EN.pdf" download>Resume herunterladen (EN PDF)</a>
+						<a class="cv-link" href="/assets/cv/Amir_Mahdi_Amani_CV_DE.pdf" download>Lebenslauf herunterladen (DE PDF)</a>
 					</div>
 				</div>
 			</header>
@@ -92,8 +78,8 @@ const highlights = [
 		<main class="wrapper stack gap-20 lg:gap-48">
 			<section class="section with-background with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Selected Work</h3>
-						<p>Featured items: publication, TIAGO navigation, thesis, and tumor detection.</p>
+					<h3>Ausgewaehlte Arbeiten</h3>
+					<p>Publikation, TIAGO-Navigation, Masterarbeit und Tumor-Detektion.</p>
 				</header>
 
 				<div class="gallery">
@@ -101,7 +87,7 @@ const highlights = [
 						{
 							selectedWork.map((entry) => (
 								<li>
-									{entry.collection === 'publications' ? (
+									{entry.collection === 'publications' || entry.collection === 'publicationsDe' ? (
 										<PublicationPreview publication={entry} />
 									) : (
 										<PortfolioPreview project={entry} />
@@ -113,8 +99,8 @@ const highlights = [
 				</div>
 
 				<div class="cta">
-					<CallToAction href="/work/">
-						View Projects
+					<CallToAction href="/de/work/">
+						Alle Projekte
 						<Icon icon="arrow-right" size="1.2em" />
 					</CallToAction>
 				</div>
@@ -123,20 +109,12 @@ const highlights = [
 			<section class="section with-background bg-variant">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Highlights</h3>
-					<p>
-						A few points that quickly describe my current profile and recent trajectory.
-					</p>
+					<p>Kurzprofil mit den wichtigsten Punkten.</p>
 				</header>
 
 				<div class="gallery">
 					<Grid variant="small">
-						{
-							highlights.map((highlight) => (
-								<li class="mention-card">
-									<p>{highlight}</p>
-								</li>
-							))
-						}
+						{highlights.map((highlight) => <li class="mention-card"><p>{highlight}</p></li>)}
 					</Grid>
 				</div>
 			</section>
@@ -166,9 +144,7 @@ const highlights = [
 		padding: 1.5rem;
 		border: 1px solid var(--gray-800);
 		border-radius: 1.5rem;
-		background:
-			linear-gradient(135deg, var(--accent-soft), transparent 58%),
-			var(--gradient-subtle);
+		background: linear-gradient(135deg, var(--accent-soft), transparent 58%), var(--gradient-subtle);
 		box-shadow: var(--shadow-md);
 	}
 
@@ -268,8 +244,6 @@ const highlights = [
 		}
 	}
 
-	/* ====================================================== */
-
 	.section {
 		display: grid;
 		gap: 2rem;
@@ -346,28 +320,8 @@ const highlights = [
 
 		.cta {
 			grid-area: cta;
-		}
-	}
-
-	/* ====================================================== */
-
-	.mention-card {
-		display: flex;
-		height: 7rem;
-		justify-content: center;
-		align-items: center;
-		text-align: center;
-		border: 1px solid var(--gray-800);
-		border-radius: 1.5rem;
-		color: var(--gray-200);
-		background: var(--gradient-subtle);
-		box-shadow: var(--shadow-sm);
-	}
-
-	@media (min-width: 50em) {
-		.mention-card {
-			border-radius: 1.5rem;
-			height: 9.5rem;
+			align-self: center;
+			justify-self: flex-end;
 		}
 	}
 </style>
