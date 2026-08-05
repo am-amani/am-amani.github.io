@@ -2,56 +2,66 @@
 import ContactCTA from '../components/ContactCTA.astro';
 import Hero from '../components/Hero.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const education = [
+	'M.Sc. in Computer Engineering, Artificial Intelligence and Robotics, University of Padova, 2021 to 2024',
+	'Erasmus+ exchange for thesis and research internship, University of Bonn, 2023 to 2024',
+	'B.Sc. in Computer Software Engineering, University of Birjand, 2015 to 2020',
+];
+
+const recognitions = [
+	'Accepted 2026 journal paper on multi-robot navigation via LiDAR-to-vision distillation',
+	'Erasmus+ Traineeship Scholarship',
+	'Regione Veneto Scholarship',
+	'Speaker at the 15th International Petroleum Technology Conference, Bangkok, 2023',
+];
 ---
 
-<BaseLayout title="About | Jeanine White" description="About Jeanine White Lorem Ipsum">
+<BaseLayout
+	title="About | Amir Mahdi Amani"
+	description="Background, education, and focus areas for Amir Mahdi Amani."
+>
 	<div class="stack gap-20">
 		<main class="wrapper about">
 			<Hero
 				title="About"
-				tagline="Thanks for stopping by. Read below to learn more about myself and my background."
+				tagline="AI and robotics engineer with a practical focus on intelligent systems, autonomous navigation, and technical automation."
 			>
-				<img
-					width="1553"
-					height="873"
-					src="/assets/at-work.jpg"
-					alt="Jeanine White at work with a colleague"
-				/>
+				<div class="intro-card">
+					<p>Based in Cologne, Germany</p>
+					<p>Currently working at Deutsche Netzplanung GmbH</p>
+					<p>Interested in AI, vision, robotics, and automation systems with real operational use.</p>
+				</div>
 			</Hero>
 
 			<section>
 				<h2 class="section-title">Background</h2>
 				<div class="content">
 					<p>
-						Lorem ipsum dolor sit amet, <a href="https://astro.build/">Astro</a> makes people happy. Sed
-						do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin nibh nisl condimentum
-						id venenatis a condimentum vitae. Dapibus ultrices in iaculis nunc. Arcu odio ut sem nulla
-						pharetra diam sit amet. Diam quis enim lobortis scelerisque fermentum dui faucibus in ornare.
+						I have an M.Sc. in Artificial Intelligence and Robotics and a background that connects academic research with engineering work. My recent work covers computer vision, autonomous navigation, reinforcement learning, and data-driven planning workflows.
 					</p>
 					<p>
-						Arcu dui vivamus arcu felis bibendum ut tristique et egestas. Eget gravida cum sociis
-						natoque penatibus. Cras fermentum odio eu feugiat pretium nibh. Proin nibh nisl
-						condimentum id venenatis. Porta nibh venenatis cras sed felis eget velit. Id diam vel
-						quam elementum pulvinar etiam non.
+						My thesis focused on multi-sensor robotic navigation using a teacher-student framework in ROS and Gazebo. In industry, I now contribute to network-planning and automation tasks using geospatial analysis, technical reporting, and software-supported optimization.
 					</p>
 					<p>
-						Ultrices tincidunt arcu non sodales neque sodales ut. Sed enim ut sem viverra aliquet
-						eget sit amet. Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.
-						Viverra accumsan in nisl nisi scelerisque eu ultrices. In massa tempor nec feugiat nisl
-						pretium fusce.
+						I enjoy building clear, usable systems that turn technical research into tools that help people make decisions faster and better.
 					</p>
 				</div>
 			</section>
 			<section>
 				<h2 class="section-title">Education</h2>
 				<div class="content">
-					<p>Corporis voluptates tenetur laudantium.</p>
+					<ul>
+						{education.map((item) => <li>{item}</li>)}
+					</ul>
 				</div>
 			</section>
 			<section>
-				<h2 class="section-title">Skills</h2>
+				<h2 class="section-title">Recognition</h2>
 				<div class="content">
-					<p>officia unde omnis</p>
+					<ul>
+						{recognitions.map((item) => <li>{item}</li>)}
+					</ul>
 				</div>
 			</section>
 		</main>
@@ -67,9 +77,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		gap: 3.5rem;
 	}
 
-	img {
+	.intro-card {
 		margin-top: 1.5rem;
+		padding: 1.5rem;
 		border-radius: 1.5rem;
+		border: 1px solid var(--gray-800);
+		background:
+			linear-gradient(135deg, var(--accent-soft), transparent 58%),
+			var(--gradient-subtle);
 		box-shadow: var(--shadow-md);
 	}
 
@@ -88,6 +103,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 	.content {
 		grid-column: 2 / 4;
+	}
+
+	.content ul {
+		padding-left: 1.2rem;
+		display: grid;
+		gap: 0.75rem;
 	}
 
 	.content :global(a) {
