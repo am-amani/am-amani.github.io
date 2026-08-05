@@ -56,4 +56,24 @@ export const collections = {
 			tags: z.array(z.string()).default([]),
 		}),
 	}),
+	news: defineCollection({
+		loader: glob({ base: './src/content/news', pattern: '**/*.md' }),
+		schema: z.object({
+			title: z.string(),
+			summary: z.string(),
+			publishDate: z.coerce.date(),
+			category: z.string(),
+			isCelebration: z.boolean().default(false),
+		}),
+	}),
+	newsDe: defineCollection({
+		loader: glob({ base: './src/content/news-de', pattern: '**/*.md' }),
+		schema: z.object({
+			title: z.string(),
+			summary: z.string(),
+			publishDate: z.coerce.date(),
+			category: z.string(),
+			isCelebration: z.boolean().default(false),
+		}),
+	}),
 };

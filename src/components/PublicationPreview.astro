@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-	publication: CollectionEntry<'publications'>;
+	publication: CollectionEntry<'publications'> | CollectionEntry<'publicationsDe'>;
 }
 
 const { data } = Astro.props.publication;
@@ -13,11 +13,20 @@ const dateLabel = data.publishDate.toLocaleDateString(isGerman ? 'de-DE' : 'en-U
 });
 const manuscriptLabel = isGerman ? 'Manuskript herunterladen' : 'Download Manuscript';
 const journalLabel = isGerman ? 'Journal-Link' : 'Journal Link';
+const accepted = /accepted|akzeptiert/i.test(data.venue);
+const celebrationLabel = isGerman ? 'Erfolgsmeldung' : 'Celebration';
 ---
 
 <article class="card">
 	<div class="copy">
-		<p class="meta">{dateLabel} · {data.venue}</p>
+		<p class="meta">
+			{dateLabel} · {data.venue}
+			{accepted && (
+				<span class="celebration" aria-label={celebrationLabel} title={celebrationLabel}>
+					🎉
+				</span>
+			)}
+		</p>
 		<h3>{data.title}</h3>
 		<p class="description">{data.description}</p>
 		<p class="abstract">{data.abstractSummary}</p>
@@ -100,9 +109,53 @@ const journalLabel = isGerman ? 'Journal-Link' : 'Journal Link';
 	}
 
 	.role {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+		width: fit-content;
+		padding: 0.25rem 0.6rem;
+		border-radius: 999rem;
+		border: 1px solid rgba(63, 220, 170, 0.45);
+		background: rgba(34, 164, 125, 0.18);
 		font-size: var(--text-sm);
 		font-weight: 600;
-		color: var(--accent-light);
+		color: var(--gray-100);
+	}
+
+	.celebration {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		margin-inline-start: 0.4rem;
+		font-size: 1rem;
+		line-height: 1;
+		animation: pop-cheer 2.1s ease-in-out infinite;
+		transform-origin: center;
+		filter: drop-shadow(0 0 0.35rem rgba(255, 205, 99, 0.45));
+	}
+
+	@keyframes pop-cheer {
+		0%,
+		100% {
+			transform: translateY(0) scale(1) rotate(0deg);
+			opacity: 0.85;
+		}
+		15% {
+			transform: translateY(-4px) scale(1.16) rotate(-12deg);
+			opacity: 1;
+		}
+		35% {
+			transform: translateY(0) scale(1.02) rotate(10deg);
+		}
+		55% {
+			transform: translateY(-2px) scale(1.12) rotate(-6deg);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.celebration {
+			animation: none;
+		}
 	}
 
 	.actions {
