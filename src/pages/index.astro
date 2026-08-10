@@ -32,8 +32,8 @@ const featuredPublication = (await getCollection('publications'))
 const selectedWork = [
 	featuredPublication,
 	selectedProjects[1],
-	selectedProjects[0],
 	selectedProjects[2],
+	selectedProjects[0],
 ].filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
 
 const highlights = [
@@ -80,10 +80,10 @@ const recentNews = (await getCollection('news'))
 						<a href="mailto:amirmahdi.amani7th@gmail.com">Email</a>
 					</div>
 					<div class="cv-links">
-						<a class="cv-link primary" href="/assets/cv/Amir_Mahdi_Amani_CV_EN.pdf" download>
+						<a class="cv-link primary" href="/assets/cv/Current_Resume_English.pdf" download>
 							Download Resume (EN PDF)
 						</a>
-						<a class="cv-link" href="/assets/cv/Amir_Mahdi_Amani_CV_DE.pdf" download>
+						<a class="cv-link" href="/assets/cv/Current_Resume_German.pdf" download>
 							Download Resume (DE PDF)
 						</a>
 					</div>

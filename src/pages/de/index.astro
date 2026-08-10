@@ -22,7 +22,7 @@ const featuredPublication = (await getCollection('publicationsDe'))
 	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
 	.at(0);
 
-const selectedWork = [featuredPublication, selectedProjects[1], selectedProjects[0], selectedProjects[2]].filter(
+const selectedWork = [featuredPublication, selectedProjects[1], selectedProjects[2], selectedProjects[0]].filter(
 	(entry): entry is NonNullable<typeof entry> => Boolean(entry),
 );
 
@@ -70,8 +70,8 @@ const recentNews = (await getCollection('newsDe'))
 						<a href="mailto:amirmahdi.amani7th@gmail.com">E-Mail</a>
 					</div>
 					<div class="cv-links">
-						<a class="cv-link primary" href="/assets/cv/Amir_Mahdi_Amani_CV_EN.pdf" download>Resume herunterladen (EN PDF)</a>
-						<a class="cv-link" href="/assets/cv/Amir_Mahdi_Amani_CV_DE.pdf" download>Lebenslauf herunterladen (DE PDF)</a>
+						<a class="cv-link primary" href="/assets/cv/Current_Resume_English.pdf" download>Resume herunterladen (EN PDF)</a>
+						<a class="cv-link" href="/assets/cv/Current_Resume_German.pdf" download>Lebenslauf herunterladen (DE PDF)</a>
 					</div>
 				</div>
 			</header>

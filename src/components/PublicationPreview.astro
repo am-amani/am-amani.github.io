@@ -11,7 +11,9 @@ const dateLabel = data.publishDate.toLocaleDateString(isGerman ? 'de-DE' : 'en-U
 	year: 'numeric',
 	month: 'short',
 });
-const manuscriptLabel = isGerman ? 'Manuskript herunterladen' : 'Download Manuscript';
+const manuscriptLabel = isGerman
+	? 'Manuskript herunterladen (bald verfuegbar)'
+	: 'Download Manuscript (available soon)';
 const journalLabel = isGerman ? 'Journal-Link' : 'Journal Link';
 const accepted = /accepted|akzeptiert/i.test(data.venue);
 const celebrationLabel = isGerman ? 'Erfolgsmeldung' : 'Celebration';
@@ -42,7 +44,7 @@ const celebrationLabel = isGerman ? 'Erfolgsmeldung' : 'Celebration';
 			</p>
 		)}
 		<div class="actions">
-			<a href={data.downloadHref} download class="download-link">{manuscriptLabel}</a>
+			<span class="download-link disabled" aria-disabled="true">{manuscriptLabel}</span>
 			<a href={data.journalHref} target="_blank" rel="noopener noreferrer" class="journal-link">
 				{journalLabel}
 			</a>
@@ -53,6 +55,7 @@ const celebrationLabel = isGerman ? 'Erfolgsmeldung' : 'Celebration';
 <style>
 	.card {
 		display: flex;
+		height: 100%;
 		min-height: 16rem;
 		background:
 			linear-gradient(145deg, rgba(15, 135, 122, 0.2), transparent 60%),
@@ -60,6 +63,22 @@ const celebrationLabel = isGerman ? 'Erfolgsmeldung' : 'Celebration';
 		border: 1px solid var(--gray-800);
 		border-radius: 0.75rem;
 		box-shadow: var(--shadow-sm);
+		transition:
+			transform var(--theme-transition),
+			box-shadow var(--theme-transition),
+			border-color var(--theme-transition);
+	}
+
+	.card:hover {
+		transform: translateY(-0.2rem);
+		box-shadow: var(--shadow-md);
+		border-color: var(--accent-light);
+	}
+
+	.card:focus-within {
+		transform: translateY(-0.2rem);
+		box-shadow: var(--shadow-md);
+		border-color: var(--accent-light);
 	}
 
 	.copy {
@@ -176,6 +195,12 @@ const celebrationLabel = isGerman ? 'Erfolgsmeldung' : 'Celebration';
 		color: var(--accent-text-over);
 		background: var(--gradient-accent-orange);
 		box-shadow: var(--shadow-sm);
+	}
+
+	.download-link.disabled {
+		cursor: not-allowed;
+		opacity: 0.6;
+		filter: grayscale(0.15);
 	}
 
 	.journal-link {
