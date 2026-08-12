@@ -15,6 +15,7 @@ const manuscriptLabel = isGerman
 	? 'Manuskript herunterladen (bald verfuegbar)'
 	: 'Download Manuscript (available soon)';
 const journalLabel = isGerman ? 'Journal-Link' : 'Journal Link';
+const codeLabel = isGerman ? 'Code' : 'Code';
 const accepted = /accepted|akzeptiert/i.test(data.venue);
 const celebrationLabel = isGerman ? 'Erfolgsmeldung' : 'Celebration';
 ---
@@ -45,6 +46,11 @@ const celebrationLabel = isGerman ? 'Erfolgsmeldung' : 'Celebration';
 		)}
 		<div class="actions">
 			<span class="download-link disabled" aria-disabled="true">{manuscriptLabel}</span>
+			{data.codeHref && (
+				<a href={data.codeHref} target="_blank" rel="noopener noreferrer" class="code-link">
+					{codeLabel}
+				</a>
+			)}
 			<a href={data.journalHref} target="_blank" rel="noopener noreferrer" class="journal-link">
 				{journalLabel}
 			</a>
@@ -203,7 +209,8 @@ const celebrationLabel = isGerman ? 'Erfolgsmeldung' : 'Celebration';
 		filter: grayscale(0.15);
 	}
 
-	.journal-link {
+	.journal-link,
+	.code-link {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;

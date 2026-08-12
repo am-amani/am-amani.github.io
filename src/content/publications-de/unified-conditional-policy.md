@@ -16,6 +16,7 @@ tags:
 abstractSummary: Diese Arbeit schlaegt eine konditionale Policy vor, die Navigationsverhalten von LiDAR-Beobachtungen auf visuelle Beobachtungen distilliert, damit Roboter robuste Entscheidungen auch bei wechselnden Sensoreingaengen beibehalten.
 downloadHref: /assets/publications/unified-conditional-policy-manuscript.txt
 journalHref: https://www.mdpi.com/journal/machines
+codeHref: https://github.com/am-amani/multimodal-drl-robot-navigation
 ---
 
 Diese Publikation stellt ein konditionales Regelungs-Framework fuer Multi-Roboter-Navigation vor, bei dem Policy-Verhalten ueber verschiedene Sensormodalitaeten uebertragen wird.
