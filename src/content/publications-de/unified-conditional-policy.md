@@ -14,8 +14,8 @@ tags:
   - Vision
   - Distillation
 abstractSummary: Diese Arbeit schlaegt eine konditionale Policy vor, die Navigationsverhalten von LiDAR-Beobachtungen auf visuelle Beobachtungen distilliert, damit Roboter robuste Entscheidungen auch bei wechselnden Sensoreingaengen beibehalten.
-downloadHref: /assets/publications/unified-conditional-policy-manuscript.txt
-journalHref: https://www.mdpi.com/journal/machines
+downloadHref: /assets/cv/machines-14-00936.pdf
+journalHref: https://www.mdpi.com/2075-1702/14/8/936
 codeHref: https://github.com/am-amani/multimodal-drl-robot-navigation
 ---
 
